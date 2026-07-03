@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Site Map Presentation — EZRV Solutions | Edington Studio</title>
+<meta name="description" content="Proposed information architecture for the EZRV Solutions website redesign, presented by Edington Studio." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ─── RESET & BASE ─────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* EZRV Solutions brand (from official brand guidelines) */
+    --blue:     #0083FC;
+    --navy:     #0E213D;
+    --white:    #FFFFFF;
+    --ink:      #111418;
+    --gray-50:  #F7F8FA;
+    --gray-200: #E2E6ED;
+    --gray-500: #7C8798;
+    --radius:   8px;
+    --font-display: 'Bebas Neue', 'Big Shoulders Display', sans-serif;
+    --font-label:   'Space Mono', monospace;
+    --font-body:    'Inter', sans-serif;
+
+    /* Edington Studio brand (from edington.co) — used only in cover + footer credit */
+    --ed-cream: #EDE7DA;
+    --ed-cream-2: #E4DDCC;
+    --ed-blue:  #1E39E8;
+    --ed-ink:   #17181C;
+    --font-ed-display: 'Big Shoulders Display', sans-serif;
+    --font-ed-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  a { color: inherit; }
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /* EDINGTON STUDIO — COVER                                          */
+  /* ═══════════════════════════════════════════════════════════════ */
+  .ed-cover {
+    background: var(--ed-cream);
+    color: var(--ed-blue);
+    padding: 40px 56px 88px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ed-cover-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 96px;
+  }
+
+  .ed-wordmark {
+    font-family: var(--font-ed-display);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+    color: var(--ed-blue);
+  }
+  .ed-wordmark span { font-weight: 600; opacity: 0.75; margin-left: 4px; }
+
+  .ed-cover-tag {
+    font-family: var(--font-ed-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ed-blue);
+    opacity: 0.7;
+  }
+
+  .ed-cover-eyebrow {
+    font-family: var(--font-ed-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ed-blue);
+    margin-bottom: 18px;
+  }
+
+  .ed-cover-title {
+    font-family: var(--font-ed-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(48px, 8vw, 108px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--ed-blue);
+    margin-bottom: 28px;
+    max-width: 1000px;
+  }
+
+  .ed-cover-hr {
+    height: 2px;
+    background: var(--ed-blue);
+    opacity: 0.25;
+    max-width: 1200px;
+    margin-bottom: 40px;
+  }
+
+  .ed-cover-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .ed-cover-sub {
+    font-family: var(--font-ed-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ed-ink);
+    max-width: 620px;
+  }
+  .ed-cover-sub strong { color: var(--ed-blue); }
+
+  .ed-cover-meta {
+    display: flex;
+    gap: 24px;
+    font-family: var(--font-ed-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ed-blue);
+    opacity: 0.8;
+    flex-shrink: 0;
+  }
+
+  .ed-scroll-cue {
+    margin-top: 56px;
+    font-family: var(--font-ed-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ed-blue);
+    opacity: 0.55;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════ */
+  /* EZRV DOCUMENT                                                    */
+  /* ═══════════════════════════════════════════════════════════════ */
+  .ezrv-doc { background: var(--white); }
+
+  .topo-bg {
+    background-color: var(--blue);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-opacity='0.12' stroke-width='1.4'%3E%3Cpath d='M0 40 Q60 10 120 40 T240 40'/%3E%3Cpath d='M0 80 Q60 50 120 80 T240 80'/%3E%3Cpath d='M0 120 Q60 90 120 120 T240 120'/%3E%3Cpath d='M0 160 Q60 130 120 160 T240 160'/%3E%3Cpath d='M0 200 Q60 170 120 200 T240 200'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 320px 320px;
+  }
+
+  /* ─── HEADER ───────────────────────────────────────────────────── */
+  header.ezrv-header {
+    background: var(--navy);
+    padding: 26px 56px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ezrv-logo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .ezrv-logo .rv { color: var(--blue); }
+
+  .header-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
+
+  .header-title {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .header-credit {
+    margin-left: auto;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .header-credit strong { color: rgba(255,255,255,0.75); }
+
+  /* ─── HERO ─────────────────────────────────────────────────────── */
+  .hero {
+    padding: 72px 56px 64px;
+    border-bottom: 4px solid var(--navy);
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 7vw, 84px);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    margin-bottom: 22px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    max-width: 620px;
+    line-height: 1.6;
+  }
+
+  .hero-tagline {
+    display: inline-block;
+    margin-top: 24px;
+    font-family: var(--font-label);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+  }
+
+  /* ─── STATS BAR ────────────────────────────────────────────────── */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 160px;
+    padding: 22px 32px;
+    border-right: 1px solid var(--gray-200);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 34px;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .stat-label {
+    margin-top: 6px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  /* ─── LEGEND ───────────────────────────────────────────────────── */
+  .legend {
+    padding: 20px 56px;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .legend-label {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-right: 4px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 5px 11px;
+    border-radius: 100px;
+  }
+
+  .badge-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  .badge-l1  { background: var(--blue);  color: var(--white); }
+  .badge-l2  { background: var(--navy);  color: var(--white); }
+  .badge-l3  { background: #EEF1F5;      color: var(--ink); }
+  .badge-new { background: #E5EFFF;      color: var(--blue); border: 1px solid #C3DBFF; }
+  .badge-soon{ background: #FFF4E0;      color: #9A6400;     border: 1px solid #FFDFA3; }
+  .badge-ext { background: #E7F6EC;      color: #227A45;     border: 1px solid #B9E6C8; }
+  .badge-pending{ background: #FFF0F0;   color: #B23C3C;     border: 1px solid #F3C6C6; }
+
+  /* ─── MAIN LAYOUT ──────────────────────────────────────────────── */
+  main { padding: 56px 56px 96px; max-width: 1440px; margin: 0 auto; }
+
+  /* ─── QUICK INDEX ──────────────────────────────────────────────── */
+  .section-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+    margin-bottom: 72px;
+    padding: 22px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+  }
+
+  .index-item {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 11px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+  .index-item:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+  .index-num { font-size: 10px; color: var(--blue); font-weight: 700; min-width: 20px; }
+
+  /* ─── SECTION BLOCK ────────────────────────────────────────────── */
+  .sm-section { margin-bottom: 64px; scroll-margin-top: 24px; }
+
+  .sm-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 26px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--blue);
+  }
+
+  .sm-section-num {
+    font-family: var(--font-label);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.14em;
+    flex-shrink: 0;
+  }
+
+  .sm-section-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .sm-section-desc {
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-left: auto;
+    text-align: right;
+    max-width: 320px;
+  }
+
+  /* ─── NODE GRID / CARDS ─────────────────────────────────────────── */
+  .node-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+  }
+
+  .node {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .node:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(14,33,61,0.08); }
+
+  .node-l1 { border-color: var(--blue); border-width: 2px; }
+
+  .node-header {
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .node-l1 .node-header { background: var(--blue); }
+  .node-l2 .node-header { background: var(--navy); }
+  .node-l3 .node-header { background: var(--gray-50); border-bottom: 1px solid var(--gray-200); }
+
+  .node-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+  }
+  .node-l1 .node-name, .node-l2 .node-name { color: var(--white); }
+  .node-l3 .node-name { color: var(--ink); }
+
+  .node-tag {
+    font-family: var(--font-label);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tag-new  { background: rgba(255,255,255,0.9); color: var(--blue); }
+  .tag-soon { background: #FF9900; color: var(--white); }
+  .tag-keep { background: rgba(255,255,255,0.2); color: var(--white); }
+  .tag-ext  { background: #2D7A2D; color: var(--white); }
+
+  .node-body { padding: 14px 16px; }
+
+  .node-url {
+    font-family: var(--font-label);
+    font-size: 10px;
+    color: var(--blue);
+    margin-bottom: 8px;
+    display: block;
+    word-break: break-all;
+  }
+
+  .node-desc { font-size: 12.5px; color: var(--gray-500); line-height: 1.55; margin-bottom: 10px; }
+
+  .sub-list { list-style: none; margin-top: 8px; }
+  .sub-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    border-top: 1px solid var(--gray-200);
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .sub-list li::before { content: '↳'; color: var(--blue); font-size: 11px; flex-shrink: 0; margin-top: 1px; }
+
+  .sub-tag { font-family: var(--font-label); font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+  .sub-tag-soon { background: #FFF3CD; color: #856404; }
+  .sub-tag-ext  { background: #E8F5E9; color: #2D7A2D; }
+  .sub-tag-new  { background: #E5EFFF; color: var(--blue); }
+
+  /* ─── PRODUCT CARD VARIANT ─────────────────────────────────────── */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .product-card {
+    border: 2px solid var(--navy);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(14,33,61,0.1); }
+
+  .product-card.soon { border-color: #CC8800; }
+
+  .product-card-header {
+    background: var(--navy);
+    padding: 15px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .product-card.soon .product-card-header { background: #7A5200; }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .product-price { font-family: var(--font-label); font-size: 13px; font-weight: 700; color: var(--blue); flex-shrink: 0; margin-left: 12px; }
+  .product-card.soon .product-price { color: #FFCC44; }
+
+  .product-body { padding: 15px 18px; }
+  .product-sku { font-family: var(--font-label); font-size: 10px; color: var(--blue); margin-bottom: 6px; }
+  .product-sub { font-size: 12.5px; color: #5b6472; margin-bottom: 10px; line-height: 1.5; }
+
+  .product-sub-list { list-style: none; }
+  .product-sub-list li {
+    font-size: 12.5px; color: var(--ink); padding: 5px 0;
+    border-top: 1px solid var(--gray-200);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .product-sub-list li::before { content: '→'; color: var(--blue); font-size: 10px; }
+
+  /* ─── AWAITING-CONTENT PLACEHOLDER ──────────────────────────────── */
+  .pending-note {
+    border: 1px dashed #D8B4B4;
+    background: #FFF7F5;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #8A3B3B;
+    line-height: 1.6;
+  }
+
+  /* ─── FLOW DIAGRAM ─────────────────────────────────────────────── */
+  .flow { display: flex; align-items: stretch; gap: 0; margin: 24px 0; flex-wrap: wrap; }
+
+  .flow-step {
+    flex: 1; min-width: 150px; padding: 18px 20px;
+    border: 1px solid var(--gray-200); position: relative; background: var(--white);
+  }
+  .flow-step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .flow-step:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+  .flow-step.active { background: var(--blue); border-color: var(--blue); }
+
+  .flow-num { font-family: var(--font-label); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; color: var(--blue); margin-bottom: 4px; }
+  .flow-step.active .flow-num { color: rgba(255,255,255,0.7); }
+
+  .flow-label { font-family: var(--font-display); font-size: 15px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.03em; color: var(--ink); }
+  .flow-step.active .flow-label { color: var(--white); }
+
+  .flow-sub { font-size: 11.5px; color: var(--gray-500); margin-top: 4px; }
+  .flow-step.active .flow-sub { color: rgba(255,255,255,0.75); }
+
+  .flow-arrow { display: flex; align-items: center; padding: 0 2px; color: var(--blue); font-size: 20px; z-index: 1; }
+
+  .journey-block { margin-bottom: 40px; }
+  .journey-title {
+    font-family: var(--font-label);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 4px;
+  }
+  .journey-desc { font-size: 13px; color: var(--gray-500); }
+
+  /* ─── NOTES ─────────────────────────────────────────────────────── */
+  .notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 8px; }
+
+  .note-card { padding: 22px; border: 1px solid var(--gray-200); border-radius: var(--radius); background: var(--gray-50); }
+  .note-card h4 { font-family: var(--font-label); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 10px; }
+  .note-card p { font-size: 13px; color: #444; line-height: 1.65; }
+
+  /* ─── FOOTER ─────────────────────────────────────────────────────── */
+  footer.ezrv-footer {
+    background: var(--navy);
+    padding: 36px 56px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  footer.ezrv-footer p {
+    font-family: var(--font-label);
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+  footer.ezrv-footer p span { color: var(--blue); }
+
+  .ed-credit {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .ed-credit-text {
+    font-family: var(--font-ed-body);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+  .ed-credit-text strong { color: var(--white); }
+  .ed-credit-ring { flex-shrink: 0; }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .ed-cover, header.ezrv-header, .hero, .legend, main, footer.ezrv-footer { padding-left: 20px; padding-right: 20px; }
+    .ed-cover-title { font-size: 44px; }
+    .ed-cover-topbar { margin-bottom: 56px; }
+    .hero h1 { font-size: 40px; }
+    .flow { flex-direction: column; }
+    .flow-step:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+    .flow-step:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+    .flow-arrow { transform: rotate(90deg); }
+    .stat { flex: 1 1 50%; border-bottom: 1px solid var(--gray-200); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- EDINGTON STUDIO — COVER                                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section class="ed-cover">
+  <div class="ed-cover-topbar">
+    <div class="ed-wordmark">Edington <span>Studio</span></div>
+    <div class="ed-cover-tag">Client Deliverable</div>
+  </div>
+
+  <p class="ed-cover-eyebrow">/ Website Strategy &amp; Information Architecture</p>
+  <h1 class="ed-cover-title">From Sitemap<br>to Launch.</h1>
+  <div class="ed-cover-hr"></div>
+
+  <div class="ed-cover-body">
+    <p class="ed-cover-sub">
+      A proposed information architecture for the redesigned <strong>ezrvsolutions.com</strong> —
+      built around the new EZRV Solutions brand and mapped against the three journeys that matter
+      most to their customers. Prepared for EZRV Solutions by Edington Studio.
+    </p>
+    <div class="ed-cover-meta">
+      <span>Edington Studio</span>
+      <span>·</span>
+      <span>July 2026</span>
+    </div>
+  </div>
+
+  <p class="ed-scroll-cue">Scroll to review the site map ↓</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- EZRV DOCUMENT                                                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="ezrv-doc">
+
+  <header class="ezrv-header">
+    <div class="ezrv-logo">EZ<span class="rv">RV</span> SOLUTIONS</div>
+    <div class="header-divider"></div>
+    <div class="header-title">Website Site Map — Redesign v1.0</div>
+    <div class="header-credit">Prepared by <strong>Edington Studio</strong></div>
+  </header>
+
+  <section class="hero topo-bg">
+    <p class="hero-eyebrow">Information Architecture · July 2026</p>
+    <h1>Site Map.<br>Redesigned.</h1>
+    <p class="hero-sub">A restructured information architecture for ezrvsolutions.com — built around three
+      customer journeys: <strong>Discover</strong>, <strong>Purchase</strong>, and <strong>Support</strong>.
+      Every page below reflects the new EZRV Solutions brand.</p>
+    <span class="hero-tagline">“Live Like You’re Home.”</span>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Top-Level Sections</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Individual Products</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Customer Journeys</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">New Product Launches</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Key</span>
+    <span class="badge badge-l1"><span class="badge-dot" style="background:#fff"></span>L1 — Primary Nav</span>
+    <span class="badge badge-l2"><span class="badge-dot" style="background:#0083FC"></span>L2 — Section Page</span>
+    <span class="badge badge-l3"><span class="badge-dot" style="background:#888"></span>L3 — Sub-Page / Content</span>
+    <span class="badge badge-new">New Page</span>
+    <span class="badge badge-soon">Coming Soon</span>
+    <span class="badge badge-ext">External Link</span>
+    <span class="badge badge-pending">Awaiting Content</span>
+  </div>
+
+  <main>
+
+    <div class="section-index" style="margin-top:0;">
+      <a class="index-item" href="#s01"><span class="index-num">01</span> Home</a>
+      <a class="index-item" href="#s02"><span class="index-num">02</span> Products</a>
+      <a class="index-item" href="#s03"><span class="index-num">03</span> How It Works</a>
+      <a class="index-item" href="#s04"><span class="index-num">04</span> Install &amp; Support</a>
+      <a class="index-item" href="#s05"><span class="index-num">05</span> Press &amp; Media</a>
+      <a class="index-item" href="#s06"><span class="index-num">06</span> Company</a>
+      <a class="index-item" href="#s07"><span class="index-num">07</span> Resources / Blog</a>
+      <a class="index-item" href="#s08"><span class="index-num">08</span> Contact</a>
+      <a class="index-item" href="#s09"><span class="index-num">09</span> Footer Utility</a>
+      <a class="index-item" href="#flows"><span class="index-num">↓</span> Customer Journeys</a>
+      <a class="index-item" href="#notes"><span class="index-num">↓</span> UX Notes</a>
+    </div>
+
+    <!-- ─── 01 HOME ───────────────────────────────────────────────── -->
+    <section class="sm-section" id="s01">
+      <div class="sm-section-header">
+        <span class="sm-section-num">01 —</span>
+        <h2 class="sm-section-title">Home</h2>
+        <p class="sm-section-desc">Single-URL homepage with structured sections, replacing the current multi-scroll layout.</p>
+      </div>
+
+      <div class="node-grid">
+        <div class="node node-l1">
+          <div class="node-header">
+            <span class="node-name">Homepage</span>
+            <span class="node-tag tag-keep">Redesign</span>
+          </div>
+          <div class="node-body">
+            <span class="node-url">/</span>
+            <p class="node-desc">Brand entry point. Sells the feeling, not the product. “Live Like You’re Home.”</p>
+            <ul class="sub-list">
+              <li>Hero section — tagline + primary CTA</li>
+              <li>Problem / solution statement (2–3 sentences)</li>
+              <li>Product overview cards → /products/*</li>
+              <li>Social proof bar — patents, press, Made in USA</li>
+              <li>Featured demo videos (3 max)</li>
+              <li>Installer finder teaser → /install</li>
+              <li>Blog / Resources preview → /resources</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 02 PRODUCTS ──────────────────────────────────────────── -->
+    <section class="sm-section" id="s02">
+      <div class="sm-section-header">
+        <span class="sm-section-num">02 —</span>
+        <h2 class="sm-section-title">Products</h2>
+        <p class="sm-section-desc">Each product gets its own URL. No more everything-on-one-page.</p>
+      </div>
+
+      <div class="node-grid" style="margin-bottom:20px;">
+        <div class="node node-l1">
+          <div class="node-header">
+            <span class="node-name">Products Overview</span>
+            <span class="node-tag tag-new">New</span>
+          </div>
+          <div class="node-body">
+            <span class="node-url">/products/</span>
+            <p class="node-desc">Side-by-side product comparison. Which product do I need? Decision-tree format.</p>
+            <ul class="sub-list">
+              <li>Comparison table — all products</li>
+              <li>Compatibility checker (RV type / year)</li>
+              <li>System bundle recommendation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-header">
+            <span class="product-name">RV Residential Flush®<br>Black Tank Bypass Valve Kit</span>
+            <span class="product-price">$279.99</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/rv-residential-flush/valve-kit/</div>
+            <p class="product-sub">Core product. Flagship. The world’s first black tank bypass valve for RVs.</p>
+            <ul class="product-sub-list">
+              <li>What it is / how it works</li>
+              <li>Compatibility requirements (12″–24″ floor space)</li>
+              <li>Kit contents (bypass valve, hand wrench, faceplates)</li>
+              <li>Installation overview</li>
+              <li>Buy Now → shopMORryde.com <span class="sub-tag sub-tag-ext">External</span></li>
+              <li>Residential Toilet Buyer’s Guide → /products/toilet-guide/</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-header">
+            <span class="product-name">RV Residential Flush®<br>Manual Drive Kit</span>
+            <span class="product-price">$49.99</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/rv-residential-flush/manual-drive/</div>
+            <p class="product-sub">Add-on to the Bypass Valve Kit. Mechanical rotary switch control.</p>
+            <ul class="product-sub-list">
+              <li>How it pairs with the Valve Kit</li>
+              <li>Installation instructions</li>
+              <li>Buy Now → shopMORryde.com <span class="sub-tag sub-tag-ext">External</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-header">
+            <span class="product-name">RV Residential Flush®<br>Motorized Drive Kit</span>
+            <span class="product-price">$399.99</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/rv-residential-flush/motorized-drive/</div>
+            <p class="product-sub">Add-on. One-touch electric switch for bypass operation.</p>
+            <ul class="product-sub-list">
+              <li>How it pairs with the Valve Kit</li>
+              <li>Buy Direct: 609-355-7061 / email</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card soon">
+          <div class="product-card-header">
+            <span class="product-name">RV Residential Flush®<br>Gray Tank Bypass Valve Kit</span>
+            <span class="product-price">Coming Soon</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/rv-residential-flush/gray-tank/ <span class="sub-tag sub-tag-soon">Soon</span></div>
+            <p class="product-sub">Patent pending. Completes the full residential plumbing package.</p>
+            <ul class="product-sub-list">
+              <li>Notify-me email signup</li>
+              <li>System preview / teaser content</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-header">
+            <span class="product-name">RV Snap Trap®<br>“Snap-On” Sewer Hose P-Trap</span>
+            <span class="product-price">$49.99</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/rv-snap-trap/</div>
+            <p class="product-sub">Patented. Eliminates sewer gas and sewer flies. Works with or without RV Residential Flush.</p>
+            <ul class="product-sub-list">
+              <li>What it does / P-Trap science</li>
+              <li>Sewer gas health warning (OSHA / CDC)</li>
+              <li>Winterization guide</li>
+              <li>Compatible hose supports</li>
+              <li>Buy Now → shopMORryde.com <span class="sub-tag sub-tag-ext">External</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card soon">
+          <div class="product-card-header">
+            <span class="product-name">RV Trap Shield™<br>Heavy Duty Steel Sewer Hose P-Trap</span>
+            <span class="product-price">Coming Soon</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/rv-trap-shield/ <span class="sub-tag sub-tag-soon">Soon</span></div>
+            <p class="product-sub">Patent pending. Steel version. Works with or without Snap Trap, with or without hose support.</p>
+            <ul class="product-sub-list">
+              <li>4 configuration modes (illustrated)</li>
+              <li>Notify-me email signup</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-header">
+            <span class="product-name">Residential Toilet<br>Buyer’s Guide</span>
+            <span class="product-price">Free</span>
+          </div>
+          <div class="product-body">
+            <div class="product-sku">/products/toilet-guide/</div>
+            <p class="product-sub">Educational content — helps a shopper pick the right residential toilet before they need the Flush kit.</p>
+            <ul class="product-sub-list">
+              <li>Content pending — part of the remainder of the plan</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 03–09 PENDING SECTIONS ─────────────────────────────────── -->
+    <section class="sm-section" id="s03">
+      <div class="sm-section-header">
+        <span class="sm-section-num">03 —</span>
+        <h2 class="sm-section-title">How It Works</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <section class="sm-section" id="s04">
+      <div class="sm-section-header">
+        <span class="sm-section-num">04 —</span>
+        <h2 class="sm-section-title">Install &amp; Support</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <section class="sm-section" id="s05">
+      <div class="sm-section-header">
+        <span class="sm-section-num">05 —</span>
+        <h2 class="sm-section-title">Press &amp; Media</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <section class="sm-section" id="s06">
+      <div class="sm-section-header">
+        <span class="sm-section-num">06 —</span>
+        <h2 class="sm-section-title">Company</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <section class="sm-section" id="s07">
+      <div class="sm-section-header">
+        <span class="sm-section-num">07 —</span>
+        <h2 class="sm-section-title">Resources / Blog</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <section class="sm-section" id="s08">
+      <div class="sm-section-header">
+        <span class="sm-section-num">08 —</span>
+        <h2 class="sm-section-title">Contact</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <section class="sm-section" id="s09">
+      <div class="sm-section-header">
+        <span class="sm-section-num">09 —</span>
+        <h2 class="sm-section-title">Footer Utility</h2>
+        <p class="sm-section-desc">Awaiting content</p>
+      </div>
+      <div class="pending-note"><span class="badge badge-pending" style="margin-right:8px;">Awaiting Content</span>This section will render in the same card system as Home and Products once the rest of the site map plan is added.</div>
+    </section>
+
+    <!-- ─── CUSTOMER JOURNEYS ──────────────────────────────────────── -->
+    <section class="sm-section" id="flows">
+      <div class="sm-section-header">
+        <span class="sm-section-num">↓ —</span>
+        <h2 class="sm-section-title">Customer Journeys</h2>
+        <p class="sm-section-desc">The site map is organized around three paths a customer actually takes.</p>
+      </div>
+
+      <div class="journey-block">
+        <p class="journey-title">Journey 01 — Discover</p>
+        <p class="journey-desc">A prospective RVer learns the brand exists and understands what problem it solves.</p>
+        <div class="flow">
+          <div class="flow-step active">
+            <div class="flow-num">STEP 01</div>
+            <div class="flow-label">Homepage</div>
+            <div class="flow-sub">Brand story, tagline</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-num">STEP 02</div>
+            <div class="flow-label">Products Overview</div>
+            <div class="flow-sub">Compare &amp; identify fit</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-num">STEP 03</div>
+            <div class="flow-label">Product Detail</div>
+            <div class="flow-sub">Specs, compatibility</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-block">
+        <p class="journey-title">Journey 02 — Purchase</p>
+        <p class="journey-desc">A convinced shopper completes the purchase — in-house or through the retail partner.</p>
+        <div class="flow">
+          <div class="flow-step">
+            <div class="flow-num">STEP 01</div>
+            <div class="flow-label">Product Detail</div>
+            <div class="flow-sub">Confirms fit</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step active">
+            <div class="flow-num">STEP 02</div>
+            <div class="flow-label">Buy Now</div>
+            <div class="flow-sub">shopMORryde.com or direct</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-num">STEP 03</div>
+            <div class="flow-label">Install &amp; Support</div>
+            <div class="flow-sub">Guides pick up post-purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-block">
+        <p class="journey-title">Journey 03 — Support</p>
+        <p class="journey-desc">An existing owner needs help — installation, warranty, or a real person.</p>
+        <div class="flow">
+          <div class="flow-step">
+            <div class="flow-num">STEP 01</div>
+            <div class="flow-label">Install &amp; Support</div>
+            <div class="flow-sub">Self-serve guides</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="flow-num">STEP 02</div>
+            <div class="flow-label">Installer Finder</div>
+            <div class="flow-sub">Find a pro nearby</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step active">
+            <div class="flow-num">STEP 03</div>
+            <div class="flow-label">Contact</div>
+            <div class="flow-sub">Direct line to the team</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── UX NOTES ───────────────────────────────────────────────── -->
+    <section class="sm-section" id="notes" style="margin-bottom:0;">
+      <div class="sm-section-header">
+        <span class="sm-section-num">↓ —</span>
+        <h2 class="sm-section-title">Why It’s Built This Way</h2>
+        <p class="sm-section-desc">A few of the reasoning calls behind the structure.</p>
+      </div>
+
+      <div class="notes-grid">
+        <div class="note-card">
+          <h4>One URL Per Product</h4>
+          <p>Every product — including add-ons like the Manual and Motorized Drive Kits — gets its own page instead of living on one long homepage. Each page can rank on its own, and a customer can be sent a single link for exactly the product they asked about.</p>
+        </div>
+        <div class="note-card">
+          <h4>Coming Soon ≠ Dead End</h4>
+          <p>The Gray Tank Bypass Valve and Trap Shield are patent-pending and not yet shippable — but their pages exist now with a notify-me signup, so EZRV starts building a launch list instead of the pages returning a 404 until release day.</p>
+        </div>
+        <div class="note-card">
+          <h4>External Buys Stay External — On Purpose</h4>
+          <p>Checkout lives on shopMORryde.com. Rather than fight that with a redirect or a confusing embedded cart, every “Buy Now” is labeled clearly as an external link so customers aren’t surprised when the page changes.</p>
+        </div>
+        <div class="note-card">
+          <h4>Structure Mirrors How People Actually Shop</h4>
+          <p>The three journeys — Discover, Purchase, Support — aren’t decorative. Every top-level section maps to one of them, so the nav matches the questions a visitor is actually asking, not an internal org chart.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="ezrv-footer">
+    <p>EZRV Solutions <span>·</span> Site Map v1.0 <span>·</span> July 2026</p>
+    <div class="ed-credit">
+      <svg class="ed-credit-ring" width="42" height="42" viewBox="0 0 100 100">
+        <defs>
+          <path id="ringPath" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <text font-size="7.6" letter-spacing="1.5" fill="rgba(255,255,255,0.55)">
+          <textPath href="#ringPath" startOffset="0%">EDINGTON STUDIO · SITE MAP · </textPath>
+        </text>
+      </svg>
+      <p class="ed-credit-text">Presented by <strong>Edington Studio</strong></p>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
